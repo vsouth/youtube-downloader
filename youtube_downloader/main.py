@@ -16,6 +16,7 @@ def generate_filename(title: str) -> str:
         re.sub("[^А-Яа-яA-Za-z0-9 (),-_]+", "", title)
         .replace("/", "-")
         .replace(":", "-")
+        .replace("?", "-")
     )
     return title + ".mp4"
 
