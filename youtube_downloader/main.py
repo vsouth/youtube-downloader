@@ -4,6 +4,9 @@ import re
 import argparse
 from pathlib import Path
 
+import os
+import sys
+
 
 def parse_txt(filename: str) -> set:
     with open(filename) as file:
@@ -40,14 +43,18 @@ def download(yt_stream: Stream, output_path: str, filename: str):
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-f", "--filename", type=str, required=False, default="video.txt"
+        "-f",
+        "--filename",
+        type=str,
+        required=False,
+        default=os.path.join(sys.path[0], "video.txt"),
     )
     parser.add_argument(
         "-p",
         "--path",
         type=str,
         required=False,
-        default="E:\code\\additional\youtube-downloader\\video",
+        default=os.path.join(os.path.dirname(sys.path[0]), "video"),
     )
     parser.add_argument("-m", "--music", action="store_true")
     return parser.parse_args()
