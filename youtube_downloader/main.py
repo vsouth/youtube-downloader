@@ -11,13 +11,9 @@ def parse_txt(filename: str) -> set:
     return urls
 
 
+#     title = re.sub(r"[^a-zA-Z0-9а-яА-Я\s_()-]+", "", title)
 def generate_filename(title: str) -> str:
-    title = (
-        re.sub("[^А-Яа-яA-Za-z0-9 (),-_]+", "", title)
-        .replace("/", "-")
-        .replace(":", "-")
-        .replace("?", "-")
-    )
+    title = re.sub(r"[^А-Яа-яA-Za-z0-9\s(),_-]+", "", title)
     return title + ".mp4"
 
 
